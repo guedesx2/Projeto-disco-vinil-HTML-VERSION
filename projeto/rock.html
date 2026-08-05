@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vinyl Store - Rock</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+background:linear-gradient(135deg,#0f061d,#2b0d4f);
+color:white;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 5%;
+background:#14081f;
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.logo span{
+color:#9d4dff;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:15px;
+}
+
+/* HERO */
+.hero{
+height:220px;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
+url("https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200");
+background-size:cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:45px;
+}
+
+/* CONTAINER */
+.container{
+display:flex;
+gap:25px;
+padding:40px 5%;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:260px;
+background:#1b0e2f;
+padding:20px;
+border-radius:15px;
+height:fit-content;
+}
+
+.sidebar h3{
+margin-bottom:15px;
+color:#9d4dff;
+}
+
+.sidebar select,
+.sidebar input{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+outline:none;
+}
+
+/* CONTENT */
+.content{
+flex:1;
+}
+
+#resultados{
+margin-bottom:15px;
+color:#bbb;
+}
+
+/* PRODUCTS */
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1a0d2d;
+border-radius:15px;
+overflow:hidden;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px #7b2cff;
+}
+
+.card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.info{
+padding:15px;
+}
+
+.price{
+margin-top:10px;
+font-size:20px;
+color:#9d4dff;
+font-weight:bold;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:12px;
+background:#7b2cff;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#9d4dff;
+}
+
+/* BACK */
+.back{
+display:flex;
+gap:15px;
+margin-bottom:20px;
+}
+
+.back a{
+color:#9d4dff;
+text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Vinyl<span>Store</span></div>
+
+<nav>
+<a href="index.html">Início</a>
+<a href="loja.html">Loja</a>
+<a href="rock.html">Rock</a>
+</nav>
+
+</header>
+
+<section class="hero">
+<h1>🎸 Rock Classics</h1>
+</section>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+<h3>Filtros</h3>
+
+<select id="artistFilter">
+<option value="todos">Todos artistas</option>
+<option value="Pink Floyd">Pink Floyd</option>
+<option value="Queen">Queen</option>
+<option value="Nirvana">Nirvana</option>
+<option value="Led Zeppelin">Led Zeppelin</option>
+<option value="AC/DC">AC/DC</option>
+<option value="The Beatles">The Beatles</option>
+</select>
+
+<select id="sortPrice">
+<option value="">Ordenar preço</option>
+<option value="low">Menor preço</option>
+<option value="high">Maior preço</option>
+</select>
+
+<input id="search" type="text" placeholder="Pesquisar álbum...">
+
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div class="back">
+<a href="index.html">🏠 Início</a>
+<a href="loja.html">🛒 Loja</a>
+</div>
+
+<p id="resultados">Carregando...</p>
+
+<div class="products" id="products">
+
+<!-- PRODUTOS -->
+
+<div class="card" data-artist="Pink Floyd" data-price="199">
+<img src="the dark side of the moon.webp">
+<div class="info">
+<h2>Pink Floyd</h2>
+<p>The Dark Side of the Moon</p>
+<div class="price">R$199,90</div>
+<button>Adicionar</button>
+</div>
+</div>
+
+<div class="card" data-artist="Queen" data-price="180">
+<img src="Greatest Hits.webp">
+<div class="info">
+<h2>Queen</h2>
+<p>Greatest Hits</p>
+<div class="price">R$180,90</div>
+<button>Adicionar</button>
+</div>
+</div>
+
+<div class="card" data-artist="Nirvana" data-price="170">
+<img src="Nevermind.webp">
+<div class="info">
+<h2>Nirvana</h2>
+<p>Nevermind</p>
+<div class="price">R$170,90</div>
+<button>Adicionar</button>
+</div>
+</div>
+
+<div class="card" data-artist="Led Zeppelin" data-price="210">
+<img src="led zeppelin.webp">
+<div class="info">
+<h2>Led Zeppelin</h2>
+<p>IV</p>
+<div class="price">R$210,90</div>
+<button>Adicionar</button>
+</div>
+</div>
+
+<div class="card" data-artist="AC/DC" data-price="195">
+<img src="acdc.webp">
+<div class="info">
+<h2>AC/DC</h2>
+<p>Back in Black</p>
+<div class="price">R$195,90</div>
+<button>Adicionar</button>
+</div>
+</div>
+
+<div class="card" data-artist="The Beatles" data-price="220">
+<img src="beatles.webp">
+<div class="info">
+<h2>The Beatles</h2>
+<p>Abbey Road</p>
+<div class="price">R$220,90</div>
+<button>Adicionar</button>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<script>
+
+const search=document.getElementById("search");
+const artist=document.getElementById("artistFilter");
+const sort=document.getElementById("sortPrice");
+const products=document.getElementById("products");
+
+let cards=[...document.querySelectorAll(".card")];
+
+function update(){
+
+let s=search.value.toLowerCase();
+let a=artist.value;
+let visible=0;
+
+cards.forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+let art=card.dataset.artist;
+
+let show=true;
+
+if(!text.includes(s)) show=false;
+
+if(a!=="todos" && art!==a) show=false;
+
+card.style.display=show?"block":"none";
+
+if(show) visible++;
+
+});
+
+document.getElementById("resultados")
+.innerText=`Mostrando ${visible} resultados`;
+
+}
+
+function sortProducts(){
+
+let type=sort.value;
+
+cards.sort((x,y)=>{
+
+let p1=+x.dataset.price;
+let p2=+y.dataset.price;
+
+return type==="low"?p1-p2:p2-p1;
+
+});
+
+cards.forEach(c=>products.appendChild(c));
+
+}
+
+search.addEventListener("input",update);
+artist.addEventListener("change",update);
+sort.addEventListener("change",sortProducts);
+
+update();
+
+</script>
+
+</body>
+</html>

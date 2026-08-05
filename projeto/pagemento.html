@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinyl Store - Pagamento</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+}
+
+body{
+background:linear-gradient(135deg,#0f061d,#2b0d4f);
+color:white;
+min-height: 100vh;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 5%;
+background:#14081f;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+text-decoration: none;
+color: white;
+}
+
+.logo span{
+color:#9d4dff;
+}
+
+.back-store {
+color: #bbb;
+text-decoration: none;
+transition: .3s;
+}
+
+.back-store:hover {
+color: #9d4dff;
+}
+
+/* LAYOUT PRINCIPAL */
+.checkout-container {
+display: flex;
+gap: 30px;
+padding: 40px 5%;
+max-width: 1200px;
+margin: 0 auto;
+flex-wrap: wrap;
+}
+
+.section-title {
+color: #9d4dff;
+margin-bottom: 20px;
+font-size: 22px;
+border-bottom: 2px solid #1b0e2f;
+padding-bottom: 10px;
+}
+
+/* RESUMO DO CARRINHO */
+.cart-summary {
+flex: 1.2;
+min-width: 320px;
+background: #14081f;
+padding: 25px;
+border-radius: 15px;
+height: fit-content;
+}
+
+.cart-item {
+display: flex;
+align-items: center;
+gap: 15px;
+background: #1b0e2f;
+padding: 15px;
+border-radius: 10px;
+margin-bottom: 15px;
+position: relative;
+}
+
+.cart-item img {
+width: 70px;
+height: 70px;
+object-fit: cover;
+border-radius: 8px;
+}
+
+.item-details {
+flex: 1;
+}
+
+.item-details h4 {
+font-size: 16px;
+margin-bottom: 2px;
+}
+
+.item-details p {
+font-size: 13px;
+color: #aaa;
+margin-bottom: 5px;
+}
+
+.item-price {
+color: #9d4dff;
+font-weight: bold;
+}
+
+/* Controles de Quantidade */
+.quantity-controls {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-top: 5px;
+}
+
+.qty-btn {
+background: #7b2cff;
+border: none;
+color: white;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+cursor: pointer;
+font-weight: bold;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.qty-btn:hover {
+background: #9d4dff;
+}
+
+.remove-btn {
+background: transparent;
+border: none;
+color: #ff4d4d;
+cursor: pointer;
+font-size: 14px;
+margin-left: auto;
+}
+
+.remove-btn:hover {
+text-underline-position: under;
+text-decoration: underline;
+}
+
+/* TOTAIS */
+.totals-box {
+margin-top: 25px;
+background: #1b0e2f;
+padding: 20px;
+border-radius: 10px;
+}
+
+.total-row {
+display: flex;
+justify-content: space-between;
+margin-bottom: 10px;
+color: #bbb;
+}
+
+.total-row.final {
+border-top: 1px solid #3a1666;
+padding-top: 15px;
+font-size: 22px;
+color: white;
+font-weight: bold;
+}
+
+.total-row.final span {
+color: #9d4dff;
+}
+
+/* FORMULÁRIO DE PAGAMENTO */
+.payment-form {
+flex: 1;
+min-width: 320px;
+background: #14081f;
+padding: 25px;
+border-radius: 15px;
+height: fit-content;
+}
+
+.form-group {
+margin-bottom: 15px;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 8px;
+font-size: 14px;
+color: #ccc;
+}
+
+.form-group input, .form-group select {
+width: 100%;
+padding: 12px;
+background: #1b0e2f;
+border: 1px solid #3a1666;
+border-radius: 10px;
+color: white;
+outline: none;
+transition: .3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+border-color: #9d4dff;
+box-shadow: 0 0 10px rgba(157, 77, 255, 0.3);
+}
+
+.btn-finish {
+width: 100%;
+padding: 15px;
+background: #7b2cff;
+border: none;
+border-radius: 12px;
+color: white;
+font-size: 18px;
+font-weight: bold;
+cursor: pointer;
+margin-top: 10px;
+transition: .3s;
+}
+
+.btn-finish:hover {
+background: #9d4dff;
+box-shadow: 0 0 15px #7b2cff;
+}
+
+.empty-cart-msg {
+text-align: center;
+padding: 40px 20px;
+color: #aaa;
+}
+
+/* CARD DE SUCESSO EM ROXO */
+.success-card {
+display: none;
+flex-direction: column;
+align-items: center;
+text-align: center;
+padding: 20px 10px;
+}
+
+.success-icon {
+font-size: 50px;
+margin-bottom: 15px;
+animation: pop 0.5s ease;
+}
+
+.success-card h2 {
+color: #9d4dff;
+margin-bottom: 15px;
+font-size: 24px;
+}
+
+.success-card p {
+color: #ddd;
+font-size: 15px;
+line-height: 1.6;
+margin-bottom: 20px;
+}
+
+.btn-back {
+padding: 12px 25px;
+background: #7b2cff;
+border: none;
+border-radius: 10px;
+color: white;
+font-weight: bold;
+cursor: pointer;
+text-decoration: none;
+transition: 0.3s;
+}
+
+.btn-back:hover {
+background: #9d4dff;
+box-shadow: 0 0 15px #7b2cff;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  80% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="loja.html" class="logo">Vinyl<span>Store</span></a>
+  <a href="loja.html" class="back-store">← Voltar para a loja</a>
+</header>
+
+<div class="checkout-container">
+  
+  <div class="cart-summary">
+    <h3 class="section-title">Seu Carrinho</h3>
+    <div id="cartItemsContainer"></div>
+
+    <div class="totals-box">
+      <div class="total-row">
+        <p>Subtotal</p>
+        <p id="subtotalVal">R$ 0,00</p>
+      </div>
+      <div class="total-row">
+        <p>Frete</p>
+        <p style="color: #2ecc71;">Grátis</p>
+      </div>
+      <div class="total-row final">
+        <p>Total</p>
+        <p id="totalVal">R$ 0,00</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="payment-form">
+    <div id="formSection">
+      <h3 class="section-title">Informações de Pagamento</h3>
+      <form id="payForm">
+        <div class="form-group">
+          <label for="nome">Nome Completo</label>
+          <input type="text" id="nome" required placeholder="Ex: John Doe">
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" required placeholder="seu@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="endereco">Endereço de Entrega</label>
+          <input type="text" id="endereco" required placeholder="Rua, número, bairro...">
+        </div>
+
+        <div class="form-group">
+          <label for="method">Forma de Pagamento</label>
+          <select id="method" required>
+            <option value="pix">Pix (Aprovação Imediata)</option>
+            <option value="cartao">Cartão de Crédito</option>
+            <option value="boleto">Boleto Bancário</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-finish">Finalizar Compra</button>
+      </form>
+    </div>
+
+    <div id="successSection" class="success-card">
+      <div class="success-icon">🎉</div>
+      <h2>Parabéns pela compra!</h2>
+      <p>Seu pedido foi processado com sucesso. Seus discos já estão reservados e prontos! Você já pode ir retirar na nossa loja física.</p>
+      <button class="btn-back" id="btnReturn">Voltar para o início</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("vinylCart")) || [];
+
+const container = document.getElementById("cartItemsContainer");
+const subtotalVal = document.getElementById("subtotalVal");
+const totalVal = document.getElementById("totalVal");
+
+function renderCart() {
+  container.innerHTML = "";
+
+  if (cart.length === 0) {
+    container.innerHTML = `<div class="empty-cart-msg"><p>Seu carrinho está vazio 💿</p></div>`;
+    subtotalVal.innerText = "R$ 0,00";
+    totalVal.innerText = "R$ 0,00";
+    return;
+  }
+
+  let subtotal = 0;
+
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    subtotal += itemTotal;
+
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "cart-item";
+    itemDiv.innerHTML = `
+      <img src="${item.image}" alt="${item.album}">
+      <div class="item-details">
+        <h4>${item.artist}</h4>
+        <p>${item.album}</p>
+        <div class="item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+        <div class="quantity-controls">
+          <button class="qty-btn" type="button" onclick="changeQty(${index}, -1)">-</button>
+          <span>${item.quantity}</span>
+          <button class="qty-btn" type="button" onclick="changeQty(${index}, 1)">+</button>
+        </div>
+      </div>
+      <button class="remove-btn" type="button" onclick="removeItem(${index})">Remover</button>
+    `;
+    container.appendChild(itemDiv);
+  });
+
+  subtotalVal.innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+  totalVal.innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+}
+
+window.changeQty = function(index, change) {
+  cart[index].quantity += change;
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+  localStorage.setItem("vinylCart", JSON.stringify(cart));
+  renderCart();
+};
+
+window.removeItem = function(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("vinylCart", JSON.stringify(cart));
+  renderCart();
+};
+
+document.getElementById("payForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  if(cart.length === 0) {
+    alert("Adicione produtos ao carrinho antes de finalizar!");
+    return;
+  }
+  
+  // Limpa o carrinho no background
+  localStorage.removeItem("vinylCart");
+  
+  // Transição visual: Esconde o formulário e mostra a mensagem estilizada em roxo
+  document.getElementById("formSection").style.display = "none";
+  document.getElementById("successSection").style.display = "flex";
+});
+
+// Ação do botão roxo de retornar para a Home do site
+document.getElementById("btnReturn").addEventListener("click", () => {
+  window.location.href = "index.html";
+});
+
+renderCart();
+</script>
+</body>
+</html>
