@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinyl Store | Contato</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#0f061d,#2b0d4f);
+color:white;
+overflow-x: hidden;
+}
+
+/* HEADER PADRONIZADO */
+header{
+position:fixed;
+width:100%;
+top:0;
+padding:20px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(20, 8, 31, 0.9);
+backdrop-filter:blur(10px);
+z-index:1000;
+border-bottom: 1px solid rgba(157, 77, 255, 0.1);
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+text-decoration: none;
+color: white;
+}
+
+.logo span{
+color:#9d4dff;
+}
+
+nav a{
+color:#bbb;
+text-decoration:none;
+margin-left:25px;
+transition:.3s;
+font-weight: 500;
+}
+
+nav a:hover{
+color:#9d4dff;
+}
+
+/* CONTAINER PRINCIPAL */
+.main-container {
+margin-top: 120px;
+padding: 40px 5%;
+max-width: 1200px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.title {
+text-align: center;
+font-size: 2.5rem;
+margin-bottom: 50px;
+position: relative;
+}
+
+.title::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+width: 60px;
+height: 4px;
+background: #9d4dff;
+border-radius: 2px;
+}
+
+/* GRID DE CONTATO */
+.contact-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+gap: 40px;
+margin-bottom: 60px;
+}
+
+@media (max-width: 500px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FORMULÁRIO DE CONTATO */
+.contact-form {
+background: #14081f;
+padding: 40px;
+border-radius: 20px;
+border: 1px solid #1b0e2f;
+position: relative;
+}
+
+.contact-form h2 {
+color: #9d4dff;
+margin-bottom: 25px;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 8px;
+color: #bbb;
+font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+width: 100%;
+padding: 12px;
+background: #1b0e2f;
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 10px;
+color: white;
+outline: none;
+font-size: 100%;
+transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+border-color: #9d4dff;
+box-shadow: 0 0 10px rgba(157, 77, 255, 0.3);
+}
+
+.btn-send {
+width: 100%;
+padding: 14px;
+background: #7b2cff;
+border: none;
+border-radius: 10px;
+color: white;
+font-weight: 600;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.btn-send:hover {
+background: #9d4dff;
+transform: translateY(-2px);
+}
+
+/* MENSAGEM DE SUCESSO BELEZINHA */
+.success-message {
+display: none;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+height: 100%;
+min-height: 300px;
+}
+
+.success-message h2 {
+color: #2ecc71;
+font-size: 2rem;
+margin-bottom: 15px;
+}
+
+.success-message p {
+color: #ccc;
+font-size: 1.1rem;
+}
+
+/* INFORMAÇÕES E ATENDIMENTO */
+.contact-info {
+display: flex;
+flex-direction: column;
+gap: 30px;
+}
+
+.info-box {
+background: #14081f;
+padding: 30px;
+border-radius: 20px;
+border: 1px solid #1b0e2f;
+}
+
+.info-box h3 {
+color: #9d4dff;
+margin-bottom: 15px;
+}
+
+.info-box p {
+color: #aaa;
+line-height: 1.6;
+margin-bottom: 10px;
+}
+
+.info-box a {
+color: #2ecc71;
+text-decoration: none;
+font-weight: bold;
+}
+
+.info-box ul {
+list-style: none;
+margin-top: 10px;
+}
+
+.info-box li {
+color: #aaa;
+padding: 5px 0;
+border-bottom: 1px solid rgba(255,255,255,0.05);
+display: flex;
+justify-content: space-between;
+}
+
+.info-box li span {
+color: #9d4dff;
+font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+background: #0a0413;
+padding: 60px 8% 30px;
+border-top: 1px solid #1b0e2f;
+margin-top: 60px;
+}
+
+.footer-content {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 40px;
+margin-bottom: 40px;
+}
+
+.footer-brand {
+max-width: 300px;
+}
+
+.footer-brand p {
+color: #888;
+margin-top: 15px;
+line-height: 1.6;
+}
+
+.footer-links h4 {
+color: #9d4dff;
+margin-bottom: 20px;
+font-size: 1.2rem;
+}
+
+.footer-links ul {
+list-style: none;
+}
+
+.footer-links li {
+margin-bottom: 12px;
+}
+
+.footer-links a {
+color: #aaa;
+text-decoration: none;
+transition: 0.3s;
+}
+
+.footer-links a:hover {
+color: white;
+padding-left: 5px;
+}
+
+.footer-bottom {
+text-align: center;
+padding-top: 30px;
+border-top: 1px solid rgba(255,255,255,0.05);
+color: #666;
+font-size: 0.9rem;
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html" class="logo">Vinyl<span>Store</span></a>
+<nav>
+<a href="index.html">Início</a>
+<a href="loja.html">Loja</a>
+<a href="index.html#categorias">Categorias</a>
+<a href="sustentabilidade.html">Sustentabilidade</a>
+<a href="contato.html">Contato</a>
+</nav>
+</header>
+
+<div class="main-container">
+<h1 class="title">Fale Conosco</h1>
+
+<div class="contact-grid">
+    <div class="contact-form" id="formContainer">
+        <form id="contactForm">
+            <h2>Mande uma mensagem</h2>
+            <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" required placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required placeholder="seuemail@exemplo.com">
+            </div>
+            <div class="form-group">
+                <label for="message">Mensagem ou Dúvida</label>
+                <textarea id="message" rows="5" required placeholder="Como podemos ajudar você?"></textarea>
+            </div>
+            <button type="submit" class="btn-send">Enviar Mensagem</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            <h2>Obrigado pelo seu feedback! 💜</h2>
+            <p>Sua mensagem foi recebida com sucesso. Nossa equipe entrará em contato em breve!</p>
+        </div>
+    </div>
+
+    <div class="contact-info">
+        <div class="info-box">
+            <h3>Nossa Localização</h3>
+            <p><strong>Endereço:</strong> Av. Goiás, 1200 - Centro (Próximo ao ParkShopping São Caetano)</p>
+            <p>Venha nos visitar para trocar ideias sobre música, conhecer nosso projeto ecológico e garimpar raridades!</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Atendimento Direto</h3>
+            <p>Ficou com alguma dúvida sobre frete ou quer encomendar um disco específico?</p>
+            <p><strong>WhatsApp / Telefone:</strong> <a href="https://wa.me/5511913706621" target="_blank">(11) 91370-6621</a></p>
+        </div>
+
+        <div class="info-box">
+            <h3>Horário de Funcionamento</h3>
+            <ul>
+                <li>Segunda a Sexta <span>09:00 - 18:00</span></li>
+                <li>Sábado <span>10:00 - 14:00</span></li>
+                <li>Domingos e Feriados <span>Fechado</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+<footer>
+<div class="footer-content">
+<div class="footer-brand">
+<div class="logo">Vinyl<span>Store</span></div>
+<p>Unindo a nostalgia das agulhas e toca-discos com a consciência ecológica que o nosso futuro exige.</p>
+</div>
+
+<div class="footer-links">
+<h4>Navegação</h4>
+<ul>
+<li><a href="index.html">Início</a></li>
+<li><a href="loja.html">Loja</a></li>
+<li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+<li><a href="contato.html">Contato</a></li>
+</ul>
+</div>
+
+<div class="footer-links">
+<h4>Destaques</h4>
+<ul>
+<li><a href="loja.html">Edições de Colecionador</a></li>
+<li><a href="sustentabilidade.html">Vinis Biodegradáveis</a></li>
+<li><a href="loja.html">Clássicos do Rock</a></li>
+</ul>
+</div>
+
+<div class="footer-links">
+<h4>Redes Sociais</h4>
+<ul>
+<li><a href="#">Instagram</a></li>
+<li><a href="#">TikTok</a></li>
+<li><a href="https://wa.me/5511913706621" target="_blank">WhatsApp</a></li>
+</ul>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>VinylStore © 2026 • Desenvolvido por Douglas, Ana Clara, Nicolly, Vitória e Isabelly. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+<script>
+    // Lógica para esconder o formulário e exibir o agradecimento fofo
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede a página de recarregar
+        
+        document.getElementById('contactForm').style.display = 'none'; // Esconde os campos
+        document.getElementById('successMessage').style.display = 'flex'; // Mostra o "Obrigado"
+    });
+</script>
+
+</body>
+</html>

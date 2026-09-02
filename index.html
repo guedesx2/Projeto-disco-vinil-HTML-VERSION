@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vinyl Store | Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#0f061d,#2b0d4f);
+color:white;
+overflow-x: hidden;
+}
+
+/* HEADER */
+header{
+position:fixed;
+width:100%;
+top:0;
+padding:20px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(20, 8, 31, 0.9);
+backdrop-filter:blur(10px);
+z-index:1000;
+border-bottom: 1px solid rgba(157, 77, 255, 0.1);
+}
+
+.logo{
+font-size:30px;
+font-weight:bold;
+text-decoration: none;
+color: white;
+}
+
+.logo span{
+color:#9d4dff;
+}
+
+nav a{
+text-decoration:none;
+color:#bbb;
+margin-left:25px;
+transition:.3s;
+font-weight: 500;
+}
+
+nav a:hover{
+color:#9d4dff;
+}
+
+/* HERO SECTION */
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background: radial-gradient(circle, rgba(43,13,79,0.5) 0%, rgba(15,6,29,1) 100%);
+}
+
+.hero-content{
+max-width:900px;
+}
+
+.vinyl{
+font-size:140px;
+margin-bottom:20px;
+display: inline-block;
+animation:girar 10s linear infinite;
+filter: drop-shadow(0 0 20px #7b2cff);
+}
+
+@keyframes girar{
+from{ transform:rotate(0deg); }
+to{ transform:rotate(360deg); }
+}
+
+.hero h1{
+font-size:4.5rem;
+margin-bottom:20px;
+line-height: 1.1;
+font-weight: 700;
+}
+
+.hero span{
+color:#9d4dff;
+text-shadow: 0 0 15px rgba(157, 77, 255, 0.5);
+}
+
+.hero p{
+font-size:1.3rem;
+margin-bottom:35px;
+color:#ccc;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:#7b2cff;
+border-radius:30px;
+text-decoration:none;
+color:white;
+font-weight: 600;
+margin:10px;
+transition:.3s;
+box-shadow: 0 4px 15px rgba(123, 44, 255, 0.3);
+}
+
+.btn:hover{
+background:#9d4dff;
+transform:translateY(-3px);
+box-shadow: 0 6px 20px rgba(157, 77, 255, 0.5);
+}
+
+.btn-secondary {
+background: transparent;
+border: 2px solid #7b2cff;
+box-shadow: none;
+}
+
+.btn-secondary:hover {
+background: rgba(123, 44, 255, 0.1);
+}
+
+/* SEÇÕES GERAIS */
+section{
+padding:80px 8%;
+}
+
+.title{
+text-align:center;
+font-size:2.8rem;
+margin-bottom:50px;
+position: relative;
+}
+
+.title::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+width: 60px;
+height: 4px;
+background: #9d4dff;
+border-radius: 2px;
+}
+
+/* CATEGORIAS E HISTÓRIA DOS GÊNEROS */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:#14081f;
+padding:30px;
+border-radius:20px;
+border: 1px solid #1b0e2f;
+transition:.3s;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color: #7b2cff;
+box-shadow: 0 10px 25px rgba(123, 44, 255, 0.2);
+}
+
+.card h2{
+margin-bottom:10px;
+color:#9d4dff;
+font-size: 1.6rem;
+text-align: center;
+}
+
+.card-history {
+font-size: 0.95rem;
+color: #bbb;
+line-height: 1.5;
+margin-bottom: 15px;
+text-align: justify;
+}
+
+.card ul{
+list-style:none;
+margin-bottom: 25px;
+border-top: 1px solid rgba(255,255,255,.05);
+padding-top: 10px;
+}
+
+.card li{
+padding:5px 0;
+color: #aaa;
+font-size: 0.9rem;
+}
+
+.card li strong {
+color: #9d4dff;
+}
+
+.card .btn-sm {
+padding: 10px 20px;
+font-size: 0.9rem;
+text-align: center;
+margin-top: auto;
+}
+
+/* HISTÓRIA */
+.history-container {
+display: flex;
+align-items: center;
+gap: 50px;
+background: #14081f;
+padding: 40px;
+border-radius: 25px;
+border: 1px solid #1b0e2f;
+flex-wrap: wrap;
+}
+
+.history-text {
+flex: 1;
+min-width: 300px;
+}
+
+.history-text p {
+color: #aaa;
+line-height: 1.8;
+margin-bottom: 15px;
+font-size: 1.1rem;
+}
+
+.history-badge {
+background: linear-gradient(135deg, #7b2cff, #9d4dff);
+padding: 40px;
+border-radius: 20px;
+text-align: center;
+min-width: 250px;
+flex-shrink: 0;
+margin: 0 auto;
+box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.history-badge h3 {
+font-size: 3rem;
+font-weight: 700;
+margin-bottom: 5px;
+}
+
+/* FOOTER COMPLETO */
+footer {
+background: #0a0413;
+padding: 60px 8% 30px;
+border-top: 1px solid #1b0e2f;
+}
+
+.footer-content {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 40px;
+margin-bottom: 40px;
+}
+
+.footer-brand {
+max-width: 300px;
+}
+
+.footer-brand p {
+color: #888;
+margin-top: 15px;
+line-height: 1.6;
+}
+
+.footer-links h4 {
+color: #9d4dff;
+margin-bottom: 20px;
+font-size: 1.2rem;
+}
+
+.footer-links ul {
+list-style: none;
+}
+
+.footer-links li {
+margin-bottom: 12px;
+}
+
+.footer-links a {
+color: #aaa;
+text-decoration: none;
+transition: 0.3s;
+}
+
+.footer-links a:hover {
+color: white;
+padding-left: 5px;
+}
+
+.footer-bottom {
+text-align: center;
+padding-top: 30px;
+border-top: 1px solid rgba(255,255,255,0.05);
+color: #666;
+font-size: 0.9rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="#" class="logo">Vinyl<span>Store</span></a>
+<nav>
+<a href="#">Início</a>
+<a href="loja.html">Loja</a>
+<a href="#categorias">Categorias</a>
+<a href="sustentabilidade.html">Sustentabilidade</a>
+<a href="contato.html">Contato</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<div class="vinyl">💿</div>
+<h1>Música de verdade,<br>estilo <span>Sustentável</span>.</h1>
+<p>Descubra discos marcantes, relíquias do pop ao metal e coleções exclusivas com embalagens 100% biodegradáveis 🌱</p>
+<a class="btn" href="loja.html">Explorar Vitrine</a>
+<a class="btn btn-secondary" href="sustentabilidade.html">Nosso Projeto</a>
+</div>
+</section>
+
+<section id="categorias">
+<h1 class="title">A História dos Gêneros</h1>
+<div class="grid">
+
+<div class="card">
+  <div>
+    <h2>🎸 Rock</h2>
+    <p class="card-history">Surgiu nos EUA na década de 1950, misturando o ritmo do Rhythm and Blues com o som caipira do Country. Revolucionou o comportamento jovem com guitarras elétricas distorcidas e muita energia.</p>
+  </div>
+  <ul>
+    <li><strong>Pioneiros:</strong> Elvis Presley, Chuck Berry</li>
+    <li><strong>Ícones no Vinil:</strong> Pink Floyd, Queen</li>
+  </ul>
+  <a class="btn btn-sm" href="loja.html">Ver Produtos</a>
+</div>
+
+<div class="card">
+  <div>
+    <h2>🎤 Pop</h2>
+    <p class="card-history">Derivado da "popular music" nos anos 50, o gênero foca em melodias fáceis de lembrar, refrões marcantes e forte apelo visual, moldando as pistas de dança de cada década através dos tempos.</p>
+  </div>
+  <ul>
+    <li><strong>Pioneiros:</strong> Michael Jackson, Madonna</li>
+    <li><strong>Ícones no Vinil:</strong> Taylor Swift, Ariana Grande</li>
+  </ul>
+  <a class="btn btn-sm" href="loja.html">Ver Produtos</a>
+</div>
+
+<div class="card">
+  <div>
+    <h2>🎶 R&B</h2>
+    <p class="card-history">O Rhythm and Blues original nasceu nos anos 40 combinando jazz e gospel. Nos anos 80 e 90, se modernizou ao incorporar batidas eletrônicas e vocais extremamente expressivos e suaves.</p>
+  </div>
+  <ul>
+    <li><strong>Pioneiros:</strong> Ray Charles, Stevie Wonder</li>
+    <li><strong>Ícones no Vinil:</strong> Frank Ocean, SZA</li>
+  </ul>
+  <a class="btn btn-sm" href="loja.html">Ver Produtos</a>
+</div>
+
+<div class="card">
+  <div>
+    <h2>🔥 Rap & Trap</h2>
+    <p class="card-history">O Rap surgiu na cultura Hip-Hop do Bronx (Nova York) nos anos 70 baseado em rimas faladas. Já o Trap evoluiu nos anos 2000 em Atlanta, trazendo graves pesados e batidas rápidas nas caixas eletrônicas.</p>
+  </div>
+  <ul>
+    <li><strong>Pioneiros:</strong> Grandmaster Flash, Tupac</li>
+    <li><strong>Ícones no Vinil:</strong> Kendrick Lamar, Travis Scott</li>
+  </ul>
+  <a class="btn btn-sm" href="loja.html">Ver Produtos</a>
+</div>
+
+</div>
+</section>
+
+<section id="historia">
+<h1 class="title">Nossa História</h1>
+<div class="history-container">
+<div class="history-text">
+<p>A <strong>Vinyl Store</strong> nasceu em junho de 2026 da união de cinco amigos apaixonados por música e inquietos com o futuro do planeta: <strong>Douglas, Ana Clara, Nicolly, Vitória e Isabelly</strong>.</p>
+<p>Nos conhecemos nos corredores do tradicional <strong>Colégio Bonifácio</strong> e, hoje, cruzando os desafios do 3º ano do Ensino Médio, decidimos transformar nosso hobby de garimpar clássicos em um negócio real.</p>
+<p>Muito mais do que apenas revender faixas marcantes, nosso objetivo é unir o resgate da cultura do vinil com o respeito ao meio ambiente através de embalagens ecológicas e discos selecionados. Mostramos que a nossa geração sabe valorizar o passado enquanto protege o futuro!</p>
+</div>
+<div class="history-badge">
+<h3>3º Ano</h3>
+<p>Ensino Médio<br>Colégio Bonifácio</p>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="footer-content">
+<div class="footer-brand">
+<div class="logo">Vinyl<span>Store</span></div>
+<p>Unindo a nostalgia das agulhas e toca-discos com a consciência ecológica que o nosso futuro exige.</p>
+</div>
+
+<div class="footer-links">
+<h4>Navegação</h4>
+<ul>
+<li><a href="#">Início</a></li>
+<li><a href="loja.html">Loja</a></li>
+<li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+<li><a href="contato.html">Contato</a></li>
+</ul>
+</div>
+
+<div class="footer-links">
+<h4>Destaques</h4>
+<ul>
+<li><a href="loja.html">Edições de Colecionador</a></li>
+<li><a href="loja.html">Vinis Biodegradáveis</a></li>
+<li><a href="loja.html">Clássicos do Rock</a></li>
+</ul>
+</div>
+
+<div class="footer-links">
+<h4>Redes Sociais</h4>
+<ul>
+<li><a href="#">Instagram</a></li>
+<li><a href="#">TikTok</a></li>
+<li><a href="#">WhatsApp</a></li>
+</ul>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>VinylStore © 2026 • Desenvolvido por Douglas, Ana Clara, Nicolly, Vitória e Isabelly. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+</body>
+</html>
